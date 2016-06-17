@@ -2,7 +2,12 @@
 var userName;
 var cartDisplay;
 var savedPizzas = {};
+var celebrityPizzas = {};
 var test;
+
+// adding pizzas to celebrityPizzas (this is the most important part of this program)
+celebrityPizzas["Adam Sandler's Cajun Man special"] = new pizza("medium", "Sicilian", ["bacon","sweet chili sauce","pepperoni"]);
+celebrityPizzas["Arnold Scharzenegger's MEATHEAD MAYHEM"] = new pizza("Woah.", "New York", ["bacon","pepperoni","sausage","Canadian bacon"]);
 
 // back end
 
@@ -18,10 +23,12 @@ var toppingCosts = {
   "bacon": 1.5,
   "bleu cheese crumble": 1,
   "broccoli": 0.5,
+  "Canadian bacon": 1,
   "four cheese blend": 0.5,
   "hummus": 1.5,
   "pepperoni": 1,
   "pineapple": 0.5,
+  "sausage": 1,
   "sweet chili sauce": 0.5
 };
 
@@ -82,12 +89,27 @@ function updateLoadList() {
     var loadOption = '<option value="' + key + '">' + key + '</option>';
     $('#loader').append(loadOption);
   });
+  loadCelebrityPizzas();
+}
+
+function loadCelebrityPizzas() {
+  var celebrityPizzasKeys = Object.keys(celebrityPizzas);
+  celebrityPizzasKeys.forEach(function(key) {
+    var loadOption = '<option value="' + key + '">' + key + '</option>';
+    $('#loader').append(loadOption);
+  });
 }
 
 // userName = prompt('Welcome, valued customer! What is your name?');
+// on load stuff
 
 var myCart = new cart();
 var recentlyCreatedPizza;
+
+$('#loader').empty();
+$('#loader').append("<option selected disabled>Load your favorite pizza</option>");
+loadCelebrityPizzas();
+
 
 $('#pizzaform').submit(function(event) {
   event.preventDefault();
@@ -108,7 +130,11 @@ $('#savenamer').click(function() {
 
 $('#pizzaloadersubmit').click(function() {
   var toLoad = $('#loader option:selected').val();
-  var loadedPizza = savedPizzas[toLoad];//no. loaded pizza does not infer stuffed crust
+  if (savedPizzas[toLoad]){
+    var loadedPizza = savedPizzas[toLoad];//no. loaded pizza does not infer stuffed crust
+  } else {
+    var loadedPizza = celebrityPizzas[toLoad];
+  }
   console.log(loadedPizza);
   $('#size').val(loadedPizza.size).attr("option", "selected");
   $('#crust').val(loadedPizza.crust).attr("option", "selected");
@@ -119,4 +145,6 @@ $('#pizzaloadersubmit').click(function() {
     }
     // return $(this).val();
   }).get();
+  var currentlyLoadingPizza = makePizzaFromForm();
+  $('#estimatedcost').text(currentlyLoadingPizza.cost());
 });
