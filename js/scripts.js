@@ -1,6 +1,7 @@
 // global
 var userName;
 var cartDisplay;
+var savedPizzas = {};
 
 // back end
 
@@ -86,4 +87,9 @@ $('#pizzaform').submit(function(event) {
 $('#pizzaform').change(function() {
   var currentlyCreatingPizza = makePizzaFromForm();
   $('#estimatedcost').text(currentlyCreatingPizza.cost());
+});
+
+$('#savenamer').click(function() {
+  savedPizzas[$('#namer').val()] = makePizzaFromForm();
+  $('#namer').val("")
 });
