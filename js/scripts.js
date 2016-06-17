@@ -1,10 +1,10 @@
 // global
 var userName;
 
-function pizza(size, toppings, crust) {
+function pizza(size, crust, toppings) {
   this.size = size;
-  this.toppings = toppings;
   this.crust = crust;
+  this.toppings = toppings;
 }
 
 // bank end
@@ -25,7 +25,6 @@ $('#pizzaform').submit(function(event) {
   var toppings = $('input[name="topping"]:checked').map(function() {
     return $(this).val();
   }).get();
-  console.log(size);
-  console.log(toppings);
-  console.log(crust);
+  var recentlyCreatedPizza = new pizza(size, crust, toppings);
+  console.log(recentlyCreatedPizza);
 });
