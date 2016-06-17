@@ -1,11 +1,10 @@
-
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --enable-file-cookies
 
 
 
 SPECIFICATIONS
 
 * Store name which customer inputs as that which they must be referred to as.
-* Users with accessibly stored names shall not again be asked again for name value. 
 * Allow customer to select size of pizza they would like.
 * Allow customer to select a first topping.
 * Allow customer to select a second topping if desired.
