@@ -48,18 +48,22 @@
         <div id="items">
           <table>
             <legend>Shopping Cart</legend>
-            <tr>
-              <th>Quantity</th>
-              <th>Size</th>
-              <th>Crust</th>
-              <th>Toppings</th>
-            </tr>
-            <tr>
-              <td>Example</td>
-              <td>Medium</td>
-              <td>Sicilian</td>
-              <td>Bacon, pineapple</td>
-            </tr>
+            <thead>
+              <tr>
+                <th>Quantity</th>
+                <th>Size</th>
+                <th>Crust</th>
+                <th>Toppings</th>
+              </tr>
+            </thead>
+            <tbody id="cartitems">
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Total:</td>
+                <td id="carttotal"></td>
+              </tr>
+            </tfoot>
           </table>
         </div>
         <button type="submit">Buy Buy Buy</button>

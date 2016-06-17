@@ -1,5 +1,6 @@
 // global
 var userName;
+var cartDisplay;
 
 // back end
 
@@ -37,7 +38,7 @@ function cart() {
   this.totalCost = 0;
 };
 
-cart.prototype.checkout = function() {
+cart.prototype.updateCheckoutTotal = function() {
   var checkoutTotal = 0;
   this.pizzas.forEach(function(pizza) {
     checkoutTotal += pizza.cost();
@@ -59,11 +60,22 @@ function makePizzaFromForm() {
 
 function addToCart(pizza) {
   myCart.pizzas.push(pizza);
+  myCart.updateCheckoutTotal();//update cart total
+  $('#carttotal').text("$" + myCart.totalCost);
+  var toppingsList = "";
+  pizza.toppings.forEach(function(topping) {
+    toppingsList += topping + " ";
+  });
+  if (pizza.toppings.length === 0)
+    toppingsList += "just cheese";
+  var cartDisplay = "<tr><td>1</td><td>" + pizza.size + "</td><td>" + pizza.crust + "</td><td>" + toppingsList + "</td></tr>";
+  $('#cartitems').append(cartDisplay);
 }
 
 // userName = prompt('Welcome, valued customer! What is your name?');
 
 var myCart = new cart();
+var recentlyCreatedPizza;
 
 $('#pizzaform').submit(function(event) {
   event.preventDefault();
