@@ -1,6 +1,12 @@
 // global
 var userName;
 
+function pizza(size, topping, crust) {
+  this.size: size;
+  this.topping: topping;
+  this.crust: crust;
+}
+
 // bank end
 
 
