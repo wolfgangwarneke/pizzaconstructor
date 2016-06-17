@@ -16,7 +16,7 @@ function pizza(size, crust, toppings) {
 
 // front end
 
-userName = prompt('Welcome, valued customer! What is your name?');
+// userName = prompt('Welcome, valued customer! What is your name?');
 
 $('#pizzaform').submit(function(event) {
   event.preventDefault();
