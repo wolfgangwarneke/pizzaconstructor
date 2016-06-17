@@ -2,9 +2,9 @@
 var userName;
 
 function pizza(size, topping, crust) {
-  this.size: size;
-  this.topping: topping;
-  this.crust: crust;
+  this.size = size;
+  this.topping = topping;
+  this.crust = crust;
 }
 
 // bank end
@@ -21,7 +21,9 @@ userName = prompt('Welcome, valued customer! What is your name?');
 $('#pizzaform').submit(function(event) {
   event.preventDefault();
   var size = $('#size option:selected').val();
-  var topping = $('input[name="topping"]:checked').val();
+  var toppings = $('input[name="topping"]:checked').map(function() {
+    return $(this).val();
+  }).get();
   console.log(size);
-  console.log(topping);
+  console.log(toppings);
 });
