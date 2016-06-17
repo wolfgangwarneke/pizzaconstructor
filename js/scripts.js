@@ -35,29 +35,26 @@ pizza.prototype.cost = function() {
 
 
 
-
-
 // front end
+
+function makePizzaFromForm(variableName) {
+  var size = $('#size option:selected').val();
+  var crust = $('#crust option:selected').val();
+  var toppings = $('input[name="topping"]:checked').map(function() {
+    return $(this).val();
+  }).get();
+  return new pizza(size, crust, toppings);
+}
 
 // userName = prompt('Welcome, valued customer! What is your name?');
 
 $('#pizzaform').submit(function(event) {
   event.preventDefault();
-  var size = $('#size option:selected').val();
-  var crust = $('#crust option:selected').val();
-  var toppings = $('input[name="topping"]:checked').map(function() {
-    return $(this).val();
-  }).get();
-  var recentlyCreatedPizza = new pizza(size, crust, toppings);
+  var recentlyCreatedPizza = makePizzaFromForm();
   console.log(recentlyCreatedPizza);
 });
 
 $('#pizzaform').change(function() {
-  var size = $('#size option:selected').val();
-  var crust = $('#crust option:selected').val();
-  var toppings = $('input[name="topping"]:checked').map(function() {
-    return $(this).val();
-  }).get();
-  var currentlyCreatingPizza = new pizza(size, crust, toppings);
+  var currentlyCreatingPizza = makePizzaFromForm();
   $('#estimatedcost').text(currentlyCreatingPizza.cost());
 });
