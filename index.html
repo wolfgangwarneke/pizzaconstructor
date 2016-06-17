@@ -19,8 +19,22 @@
         </select>
         <!-- <fieldset> -->
           <legend>Which topping would you like?</legend>
-            <input class="topping" type="checkbox" name="topping" value="pepperoni" />Pepperoni<br />
-            <input class="topping" type="checkbox" name="topping" value="chowder" />Clam chowder<br />
+            <div id="meats" class="checkboxgroup">
+              <input class="topping" type="checkbox" name="topping" value="pepperoni" />Pepperoni<br />
+              <input class="topping" type="checkbox" name="topping" value="bacon" />Bacon<br />
+            </div>
+            <div id="vegetables" class="checkboxgroup">
+              <input class="topping" type="checkbox" name="topping" value="pineapple" />Pineapple<br />
+              <input class="topping" type="checkbox" name="topping" value="broccoli" />Broccoli<br />
+            </div>
+            <div id="cheese" class="checkboxgroup">
+              <input class="topping" type="checkbox" name="topping" value="Bleu cheese crumble" />Bleu cheese crumble<br />
+              <input class="topping" type="checkbox" name="topping" value="four cheese blend" />Four cheese blend<br />
+            </div>
+            <div id="sauces" class="checkboxgroup">
+              <input class="topping" type="checkbox" name="topping" value="sweet chili sauce" />Sweet chili sauce<br />
+              <input class="topping" type="checkbox" name="topping" value="hummus" />Hummus<br />
+            </div>
         <!-- </fieldset> -->
         <button type="submit">Save Pizza For Later</button>
       </form>
