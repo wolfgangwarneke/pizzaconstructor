@@ -2,6 +2,7 @@
 var userName;
 var cartDisplay;
 var savedPizzas = {};
+var test;
 
 // back end
 
@@ -73,6 +74,16 @@ function addToCart(pizza) {
   $('#cartitems').append(cartDisplay);
 }
 
+function updateLoadList() {
+  $('#loader').empty();
+  $('#loader').append("<option selected disabled>Load your favorite pizza</option>");
+  var savedPizzasKeys = Object.keys(savedPizzas);
+  savedPizzasKeys.forEach(function(key) {
+    var loadOption = '<option value="' + key + '">' + key + '</option>';
+    $('#loader').append(loadOption);
+  });
+}
+
 // userName = prompt('Welcome, valued customer! What is your name?');
 
 var myCart = new cart();
@@ -91,5 +102,21 @@ $('#pizzaform').change(function() {
 
 $('#savenamer').click(function() {
   savedPizzas[$('#namer').val()] = makePizzaFromForm();
-  $('#namer').val("")
+  $('#namer').val("");
+  updateLoadList();
+});
+
+$('#pizzaloadersubmit').click(function() {
+  var toLoad = $('#loader option:selected').val();
+  var loadedPizza = savedPizzas[toLoad];//no. loaded pizza does not infer stuffed crust
+  console.log(loadedPizza);
+  $('#size').val(loadedPizza.size).attr("option", "selected");
+  $('#crust').val(loadedPizza.crust).attr("option", "selected");
+  $('input[name="topping"]').map(function() {
+    this.checked=false;
+    if ( loadedPizza.toppings.indexOf(this.value) !== -1 ) {
+      this.checked=true;
+    }
+    // return $(this).val();
+  }).get();
 });

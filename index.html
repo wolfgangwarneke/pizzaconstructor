@@ -9,7 +9,12 @@
   <body>
     <div id="pizzacustomization">
       <label for="namer">Name this pizza!</label><input type="text" name="namer" id="namer">
-      <button type="button" id="savenamer">Save it for later</button>
+      <button type="button" id="savenamer">Save it for later</button><br />
+      <label for="loader">Load a pizza...</label>
+      <select id="loader" name="loader">
+        <option selected disabled>Load your favorite pizza</option>
+      </select>
+      <button type="button" id="pizzaloadersubmit">Load 'za.</button><br />
       <form id="pizzaform">
         <select id="size">
           <option value="personal">Personal</option>
