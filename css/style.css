@@ -1,3 +1,16 @@
-table td {
-  border: 3px dashed #292;
+body {
+}
+
+#lecartedeshopping {
+  margin-top: 30px;
+  border-top: 2px dashed #F33;
+}
+
+input, button, label, select {
+  margin: 6px;
+}
+
+[for|=topping] {
+  display: block;
+  margin-top: 9px;
 }

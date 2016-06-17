@@ -55,6 +55,10 @@ cart.prototype.updateCheckoutTotal = function() {
   this.totalCost = checkoutTotal;
 }
 
+cart.prototype.delEatPizzaFromCart = function(pizzaToDelEat) {
+  var index = this.pizzas.indexOf(pizzaToDelEat);
+  this.pizzas.splice(index, 1);
+}
 
 // front end
 
@@ -77,7 +81,7 @@ function addToCart(pizza) {
   });
   if (pizza.toppings.length === 0)
     toppingsList += "just cheese";
-  var cartDisplay = "<tr><td>1</td><td>" + pizza.size + "</td><td>" + pizza.crust + "</td><td>" + toppingsList + "</td><td>$" + pizza.cost() + "</td></tr>";
+  var cartDisplay = "<tr><td>1</td><td>" + pizza.size + "</td><td>" + pizza.crust + "</td><td>" + toppingsList + "</td><td>$" + pizza.cost() + "</td><td class='removal' id='" + myCart.pizzas.length + "'>remove from cart</td></tr>";
   $('#cartitems').append(cartDisplay);
 }
 
@@ -115,6 +119,15 @@ $('#pizzaform').submit(function(event) {
   event.preventDefault();
   var recentlyCreatedPizza = makePizzaFromForm();
   addToCart(recentlyCreatedPizza);
+  ////////////this new click event is probably really wonky code
+                    ///might need to have this submit call itselfs recursively to deal with this issue #DOMproblems
+  $(".removal").click(function(event) {
+    var id = event.target.id;
+    myCart.pizzas.splice(parseInt(id)-1, 1);
+    $("#cartitems tr").eq(parseInt(id)-1).remove();
+    myCart.updateCheckoutTotal();
+    $('#carttotal').text("$" + myCart.totalCost);
+  });
 });
 
 $('#pizzaform').change(function() {
