@@ -17,8 +17,12 @@
           <option value="extra large">Extra large</option>
           <option value="Woah.">Woah.</option>
         </select>
-        <!-- <fieldset> -->
-          <legend>Which topping would you like?</legend>
+        <select id="crust">
+          <option value="traditional">Traditional</option>
+          <option value="New York">New York</option>
+          <option value="Sicilian">Sicilian</option>
+        </select><br />
+          <label for="topping">Which topping would you like?</label>
             <div id="meats" class="checkboxgroup">
               <input class="topping" type="checkbox" name="topping" value="pepperoni" />Pepperoni<br />
               <input class="topping" type="checkbox" name="topping" value="bacon" />Bacon<br />
@@ -35,7 +39,6 @@
               <input class="topping" type="checkbox" name="topping" value="sweet chili sauce" />Sweet chili sauce<br />
               <input class="topping" type="checkbox" name="topping" value="hummus" />Hummus<br />
             </div>
-        <!-- </fieldset> -->
         <button type="submit">Save Pizza For Later</button>
       </form>
     </div>

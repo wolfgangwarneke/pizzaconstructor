@@ -9,6 +9,7 @@ SPECIFICATIONS
 * Allow customer to select a first topping.
 * Allow customer to select a second topping if desired.
 * Allow customer to select toppings until the unrelenting appetites of their hungry eyes are fully satiated.
+* Allow customer to select desired style of crust.
 * Deliver the pizza to the customer.  The cost of the pizza that is.
 * Now there is a shopping cart.
 * Allow the customer to send their current pizza to a shopping cart.
