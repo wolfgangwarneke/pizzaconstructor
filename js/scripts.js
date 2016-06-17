@@ -77,7 +77,7 @@ function addToCart(pizza) {
   });
   if (pizza.toppings.length === 0)
     toppingsList += "just cheese";
-  var cartDisplay = "<tr><td>1</td><td>" + pizza.size + "</td><td>" + pizza.crust + "</td><td>" + toppingsList + "</td></tr>";
+  var cartDisplay = "<tr><td>1</td><td>" + pizza.size + "</td><td>" + pizza.crust + "</td><td>" + toppingsList + "</td><td>$" + pizza.cost() + "</td></tr>";
   $('#cartitems').append(cartDisplay);
 }
 
