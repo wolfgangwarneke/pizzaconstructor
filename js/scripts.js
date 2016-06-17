@@ -32,12 +32,23 @@ pizza.prototype.cost = function() {
   return cost;
 }
 
+function cart() {
+  this.pizzas = [],
+  this.totalCost = 0;
+};
 
+cart.prototype.checkout = function() {
+  var checkoutTotal = 0;
+  this.pizzas.forEach(function(pizza) {
+    checkoutTotal += pizza.cost();
+  });
+  this.totalCost = checkoutTotal;
+}
 
 
 // front end
 
-function makePizzaFromForm(variableName) {
+function makePizzaFromForm() {
   var size = $('#size option:selected').val();
   var crust = $('#crust option:selected').val();
   var toppings = $('input[name="topping"]:checked').map(function() {
@@ -46,12 +57,18 @@ function makePizzaFromForm(variableName) {
   return new pizza(size, crust, toppings);
 }
 
+function addToCart(pizza) {
+  myCart.pizzas.push(pizza);
+}
+
 // userName = prompt('Welcome, valued customer! What is your name?');
+
+var myCart = new cart();
 
 $('#pizzaform').submit(function(event) {
   event.preventDefault();
   var recentlyCreatedPizza = makePizzaFromForm();
-  console.log(recentlyCreatedPizza);
+  addToCart(recentlyCreatedPizza);
 });
 
 $('#pizzaform').change(function() {
